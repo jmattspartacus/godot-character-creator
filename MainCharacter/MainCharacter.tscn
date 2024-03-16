@@ -1,7 +1,7 @@
 [gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://MainCharacter/MainCharacter.gd" type="Script" id=1]
-[ext_resource path="res://MainCharacter/Mesh/MainCharacter.gltf" type="PackedScene" id=2]
+[ext_resource path="res://MainCharacter/Mesh/MainRig.gltf" type="PackedScene" id=2]
 
 [sub_resource type="BoxShape3D" id=1]
 extents = Vector3( 0.02, 0.004, 0.0141144 )
