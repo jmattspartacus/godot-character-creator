@@ -1,13 +1,13 @@
 [gd_resource type="ShaderMaterial" load_steps=77 format=2]
 
-[ext_resource path="res://MainCharacter/Material/Textures/body/head_orsc.jpg" type="Texture" id=1]
-[ext_resource path="res://MainCharacter/Material/Textures/body/head_n_flip.jpg" type="Texture" id=2]
-[ext_resource path="res://MainCharacter/Material/Textures/body/head_a.jpg" type="Texture" id=3]
-[ext_resource path="res://MainCharacter/Material/Textures/subHair/subHair0_mask.jpg" type="Texture" id=4]
-[ext_resource path="res://MainCharacter/Material/Textures/body/null_white.jpg" type="Texture" id=5]
-[ext_resource path="res://MainCharacter/Material/Textures/body/null_black.jpg" type="Texture" id=6]
-[ext_resource path="res://MainCharacter/Material/Textures/head_masks/darkSkinMask.jpg" type="Texture" id=7]
-[ext_resource path="res://MainCharacter/Material/Textures/body/head_n_detail.jpg" type="Texture" id=8]
+[ext_resource path="res://MainCharacter/Material/Textures/body/head_orsc.jpg" type="Texture2D" id=1]
+[ext_resource path="res://MainCharacter/Material/Textures/body/head_n_flip.jpg" type="Texture2D" id=2]
+[ext_resource path="res://MainCharacter/Material/Textures/body/head_a.jpg" type="Texture2D" id=3]
+[ext_resource path="res://MainCharacter/Material/Textures/subHair/subHair0_mask.jpg" type="Texture2D" id=4]
+[ext_resource path="res://MainCharacter/Material/Textures/body/null_white.jpg" type="Texture2D" id=5]
+[ext_resource path="res://MainCharacter/Material/Textures/body/null_black.jpg" type="Texture2D" id=6]
+[ext_resource path="res://MainCharacter/Material/Textures/head_masks/darkSkinMask.jpg" type="Texture2D" id=7]
+[ext_resource path="res://MainCharacter/Material/Textures/body/head_n_detail.jpg" type="Texture2D" id=8]
 
 [sub_resource type="VisualShaderNodeInput" id=1]
 input_name = "uv"
@@ -20,13 +20,13 @@ expression = "vec3 mult = uv*vec3(2.0,4.0,0.0)*scale;
 //float yy = y;
 out = mult+vec3(x,eyeBrowHeight,0.0);"
 
-[sub_resource type="VisualShaderNodeScalarUniform" id=3]
+[sub_resource type="VisualShaderNodeFloatParameter" id=3]
 uniform_name = "x"
 
-[sub_resource type="VisualShaderNodeScalarUniform" id=4]
+[sub_resource type="VisualShaderNodeFloatParameter" id=4]
 uniform_name = "eyeBrowHeight"
 
-[sub_resource type="VisualShaderNodeScalarUniform" id=5]
+[sub_resource type="VisualShaderNodeFloatParameter" id=5]
 uniform_name = "scale"
 
 [sub_resource type="VisualShaderNodeVectorOp" id=6]
@@ -36,11 +36,11 @@ operator = 2
 [sub_resource type="VisualShaderNodeInput" id=7]
 input_name = "uv"
 
-[sub_resource type="VisualShaderNodeTextureUniform" id=8]
+[sub_resource type="VisualShaderNodeTexture2DParameter" id=8]
 uniform_name = "beard"
 texture_type = 1
 
-[sub_resource type="VisualShaderNodeTextureUniform" id=9]
+[sub_resource type="VisualShaderNodeTexture2DParameter" id=9]
 uniform_name = "eyebrows"
 texture_type = 1
 
@@ -48,83 +48,83 @@ texture_type = 1
 output_port_for_preview = 0
 operator = 2
 
-[sub_resource type="VisualShaderNodeScalarFunc" id=11]
+[sub_resource type="VisualShaderNodeFloatFunc" id=11]
 function = 31
 
-[sub_resource type="VisualShaderNodeScalarOp" id=12]
+[sub_resource type="VisualShaderNodeFloatOp" id=12]
 output_port_for_preview = 0
 
-[sub_resource type="VisualShaderNodeScalarOp" id=13]
+[sub_resource type="VisualShaderNodeFloatOp" id=13]
 output_port_for_preview = 0
 
-[sub_resource type="VisualShaderNodeScalarFunc" id=14]
+[sub_resource type="VisualShaderNodeFloatFunc" id=14]
 function = 31
 
 [sub_resource type="VisualShaderNodeVectorOp" id=15]
 operator = 2
 
-[sub_resource type="VisualShaderNodeScalarFunc" id=16]
+[sub_resource type="VisualShaderNodeFloatFunc" id=16]
 function = 31
 
-[sub_resource type="VisualShaderNodeScalarOp" id=17]
+[sub_resource type="VisualShaderNodeFloatOp" id=17]
 output_port_for_preview = 0
 
-[sub_resource type="VisualShaderNodeScalarUniform" id=18]
+[sub_resource type="VisualShaderNodeFloatParameter" id=18]
 uniform_name = "scatt"
 
-[sub_resource type="VisualShaderNodeVectorInterp" id=19]
+[sub_resource type="VisualShaderNodeMix" id=19]
 output_port_for_preview = 0
 
-[sub_resource type="VisualShaderNodeTextureUniform" id=20]
+[sub_resource type="VisualShaderNodeTexture2DParameter" id=20]
 uniform_name = "darkSkinMask"
 texture_type = 1
 
-[sub_resource type="VisualShaderNodeScalarUniform" id=21]
+[sub_resource type="VisualShaderNodeFloatParameter" id=21]
 uniform_name = "NoiseTile"
 
-[sub_resource type="VisualShaderNodeScalarFunc" id=22]
+[sub_resource type="VisualShaderNodeFloatFunc" id=22]
 function = 31
 
-[sub_resource type="VisualShaderNodeScalarOp" id=23]
+[sub_resource type="VisualShaderNodeFloatOp" id=23]
 default_input_values = [ 0, 0.0, 1, 0.08 ]
 operator = 2
 
-[sub_resource type="VisualShaderNodeTextureUniform" id=24]
+[sub_resource type="VisualShaderNodeTexture2DParameter" id=24]
 uniform_name = "normalDetail"
 texture_type = 2
 color_default = 1
 
-[sub_resource type="VisualShaderNodeVectorInterp" id=25]
+[sub_resource type="VisualShaderNodeMix" id=25]
 
-[sub_resource type="VisualShaderNodeScalarUniform" id=26]
+[sub_resource type="VisualShaderNodeFloatParameter" id=26]
 uniform_name = "normalBlend"
 
 [sub_resource type="VisualShaderNodeColorOp" id=27]
 operator = 4
 
-[sub_resource type="VisualShaderNodeColorUniform" id=28]
+[sub_resource type="VisualShaderNodeColorParameter" id=28]
 uniform_name = "facePaintColor"
 
-[sub_resource type="VisualShaderNodeScalarOp" id=29]
+[sub_resource type="VisualShaderNodeFloatOp" id=29]
 operator = 2
 
-[sub_resource type="VisualShaderNodeTextureUniform" id=30]
+[sub_resource type="VisualShaderNodeTexture2DParameter" id=30]
 uniform_name = "facePaint"
 texture_type = 1
 
 [sub_resource type="VisualShaderNodeInput" id=31]
 input_name = "uv"
 
-[sub_resource type="VisualShaderNodeVectorInterp" id=32]
+[sub_resource type="VisualShaderNodeMix" id=32]
 default_input_values = [ 0, Vector3( 0, 0, 0 ), 1, Vector3( 1, 1, 1 ), 2, Vector3( 0, 0, 0 ) ]
 
-[sub_resource type="VisualShaderNodeScalarOp" id=33]
+[sub_resource type="VisualShaderNodeFloatOp" id=33]
 output_port_for_preview = 0
 
-[sub_resource type="VisualShaderNodeScalarFunc" id=34]
+[sub_resource type="VisualShaderNodeFloatFunc" id=34]
 function = 31
 
-[sub_resource type="VisualShaderNodeTextureUniform" id=35]
+[sub_resource type="VisualShaderNodeTexture2DParameter" id=35]
 output_port_for_preview = 0
 uniform_name = "ors"
 
@@ -136,21 +136,21 @@ input_name = "uv"
 [sub_resource type="VisualShaderNodeVectorOp" id=38]
 operator = 2
 
-[sub_resource type="VisualShaderNodeColorUniform" id=39]
+[sub_resource type="VisualShaderNodeColorParameter" id=39]
 uniform_name = "skinTone"
 
-[sub_resource type="VisualShaderNodeScalarOp" id=40]
+[sub_resource type="VisualShaderNodeFloatOp" id=40]
 output_port_for_preview = 0
 operator = 2
 
-[sub_resource type="VisualShaderNodeScalarUniform" id=41]
+[sub_resource type="VisualShaderNodeFloatParameter" id=41]
 uniform_name = "rPunch"
 
 [sub_resource type="VisualShaderNodeVectorOp" id=42]
 output_port_for_preview = 0
 operator = 2
 
-[sub_resource type="VisualShaderNodeColorUniform" id=43]
+[sub_resource type="VisualShaderNodeColorParameter" id=43]
 uniform_name = "transmision"
 
 [sub_resource type="VisualShaderNodeFresnel" id=44]
@@ -162,7 +162,7 @@ input_name = "normal"
 [sub_resource type="VisualShaderNodeInput" id=46]
 input_name = "view"
 
-[sub_resource type="VisualShaderNodeScalarUniform" id=47]
+[sub_resource type="VisualShaderNodeFloatParameter" id=47]
 uniform_name = "frenel"
 
 [sub_resource type="VisualShaderNodeVectorOp" id=48]
@@ -170,24 +170,24 @@ uniform_name = "frenel"
 [sub_resource type="VisualShaderNodeVectorOp" id=49]
 operator = 2
 
-[sub_resource type="VisualShaderNodeColorUniform" id=50]
+[sub_resource type="VisualShaderNodeColorParameter" id=50]
 uniform_name = "FresnelColor"
 
-[sub_resource type="VisualShaderNodeScalarUniform" id=51]
+[sub_resource type="VisualShaderNodeFloatParameter" id=51]
 uniform_name = "sPunch"
 
-[sub_resource type="VisualShaderNodeTextureUniform" id=52]
+[sub_resource type="VisualShaderNodeTexture2DParameter" id=52]
 uniform_name = "normal"
 texture_type = 2
 color_default = 1
 
-[sub_resource type="VisualShaderNodeScalarUniform" id=53]
+[sub_resource type="VisualShaderNodeFloatParameter" id=53]
 uniform_name = "normalScale"
 
 [sub_resource type="VisualShaderNodeInput" id=54]
 input_name = "uv"
 
-[sub_resource type="VisualShaderNodeTextureUniform" id=55]
+[sub_resource type="VisualShaderNodeTexture2DParameter" id=55]
 uniform_name = "subHair"
 texture_type = 1
 
@@ -195,10 +195,10 @@ texture_type = 1
 output_port_for_preview = 0
 operator = 2
 
-[sub_resource type="VisualShaderNodeScalarConstant" id=57]
+[sub_resource type="VisualShaderNodeFloatConstant" id=57]
 constant = 0.5
 
-[sub_resource type="VisualShaderNodeScalarOp" id=58]
+[sub_resource type="VisualShaderNodeFloatOp" id=58]
 output_port_for_preview = 0
 operator = 2
 
@@ -211,49 +211,49 @@ constant = Color( 0.0216697, 0.0900113, 0.15625, 1 )
 [sub_resource type="VisualShaderNodeInput" id=61]
 input_name = "uv"
 
-[sub_resource type="VisualShaderNodeScalarUniform" id=62]
+[sub_resource type="VisualShaderNodeFloatParameter" id=62]
 uniform_name = "roughness"
 
-[sub_resource type="VisualShaderNodeVectorInterp" id=63]
+[sub_resource type="VisualShaderNodeMix" id=63]
 default_input_values = [ 0, Vector3( 0, 0, 0 ), 1, Vector3( 0, 0, 1 ), 2, Vector3( 0, 0, 0 ) ]
 
-[sub_resource type="VisualShaderNodeTextureUniform" id=64]
+[sub_resource type="VisualShaderNodeTexture2DParameter" id=64]
 uniform_name = "idMask"
 color_default = 1
 
 [sub_resource type="VisualShaderNodeInput" id=65]
 input_name = "uv"
 
-[sub_resource type="VisualShaderNodeTextureUniform" id=66]
+[sub_resource type="VisualShaderNodeTexture2DParameter" id=66]
 uniform_name = "albedo"
 texture_type = 1
 
-[sub_resource type="VisualShaderNodeTextureUniform" id=67]
+[sub_resource type="VisualShaderNodeTexture2DParameter" id=67]
 uniform_name = "Normal_detail2"
 
 [sub_resource type="VisualShader" id=68]
 code = "shader_type spatial;
-uniform vec4 facePaintColor : hint_color;
-uniform sampler2D albedo : hint_albedo;
+uniform vec4 facePaintColor : source_color;
+uniform sampler2D albedo : source_color;
 uniform float x;
 uniform float eyeBrowHeight;
 uniform float scale;
-uniform sampler2D eyebrows : hint_albedo;
-uniform sampler2D subHair : hint_albedo;
-uniform sampler2D beard : hint_albedo;
-uniform vec4 skinTone : hint_color;
-uniform sampler2D darkSkinMask : hint_albedo;
-uniform sampler2D facePaint : hint_albedo;
+uniform sampler2D eyebrows : source_color;
+uniform sampler2D subHair : source_color;
+uniform sampler2D beard : source_color;
+uniform vec4 skinTone : source_color;
+uniform sampler2D darkSkinMask : source_color;
+uniform sampler2D facePaint : source_color;
 uniform sampler2D ors;
 uniform float rPunch;
 uniform float sPunch;
-uniform sampler2D idMask : hint_black;
+uniform sampler2D idMask : hint_default_black;
 uniform sampler2D normalDetail : hint_normal;
 uniform sampler2D normal : hint_normal;
 uniform float normalBlend;
 uniform float normalScale;
 uniform float scatt;
-uniform vec4 transmision : hint_color;
+uniform vec4 transmision : source_color;
 
 
 
@@ -580,10 +580,10 @@ void fragment() {
 	SPECULAR = n_out54p0;
 	EMISSION = n_out74p0;
 	AO = n_out16p0;
-	NORMALMAP = n_out134p0;
-	NORMALMAP_DEPTH = n_out43p0;
+	NORMAL_MAP = n_out134p0;
+	NORMAL_MAP_DEPTH = n_out43p0;
 	SSS_STRENGTH = n_out122p0;
-	TRANSMISSION = n_out25p0;
+	BACKLIGHT = n_out25p0;
 	AO_LIGHT_AFFECT = n_out52p0;
 
 }
@@ -736,7 +736,7 @@ nodes/fragment/146/node = SubResource( 33 )
 nodes/fragment/146/position = Vector2( 1180, 40 )
 nodes/fragment/147/node = SubResource( 34 )
 nodes/fragment/147/position = Vector2( 1580, -300 )
-nodes/fragment/connections = PoolIntArray( 6, 0, 4, 0, 10, 0, 12, 0, 12, 0, 9, 0, 13, 0, 12, 1, 9, 0, 14, 0, 7, 0, 14, 1, 15, 0, 16, 0, 17, 0, 15, 0, 16, 0, 0, 6, 19, 0, 18, 1, 16, 1, 22, 0, 23, 0, 22, 1, 26, 0, 25, 1, 32, 0, 31, 0, 33, 0, 31, 1, 35, 0, 31, 3, 38, 0, 37, 1, 31, 0, 37, 0, 37, 0, 36, 1, 16, 2, 25, 0, 43, 0, 0, 9, 47, 0, 8, 0, 52, 0, 0, 19, 39, 0, 54, 1, 15, 1, 54, 0, 74, 0, 0, 5, 65, 0, 75, 0, 75, 0, 74, 2, 61, 0, 74, 1, 78, 0, 100, 0, 102, 0, 100, 2, 103, 0, 100, 3, 101, 0, 100, 1, 106, 0, 107, 0, 107, 0, 104, 1, 100, 0, 108, 0, 108, 0, 51, 1, 48, 0, 115, 1, 106, 0, 48, 0, 51, 0, 115, 0, 115, 0, 104, 0, 108, 0, 116, 0, 22, 0, 117, 0, 116, 0, 117, 1, 117, 0, 118, 0, 119, 0, 118, 1, 107, 0, 120, 0, 118, 0, 121, 0, 120, 0, 121, 1, 122, 0, 0, 16, 18, 0, 123, 1, 130, 0, 123, 2, 124, 0, 131, 0, 8, 0, 51, 0, 104, 0, 18, 0, 104, 0, 123, 0, 106, 0, 124, 0, 48, 0, 119, 0, 131, 0, 130, 0, 54, 0, 0, 4, 6, 0, 133, 0, 135, 0, 134, 2, 136, 0, 134, 1, 134, 0, 0, 8, 133, 0, 136, 0, 4, 0, 136, 1, 133, 0, 134, 0, 142, 0, 141, 0, 141, 0, 145, 2, 123, 0, 145, 1, 139, 0, 145, 0, 141, 0, 147, 0, 147, 0, 146, 1, 121, 0, 146, 0, 146, 0, 0, 3, 145, 0, 0, 0, 25, 0, 0, 17 )
+nodes/fragment/connections = PackedInt32Array( 6, 0, 4, 0, 10, 0, 12, 0, 12, 0, 9, 0, 13, 0, 12, 1, 9, 0, 14, 0, 7, 0, 14, 1, 15, 0, 16, 0, 17, 0, 15, 0, 16, 0, 0, 6, 19, 0, 18, 1, 16, 1, 22, 0, 23, 0, 22, 1, 26, 0, 25, 1, 32, 0, 31, 0, 33, 0, 31, 1, 35, 0, 31, 3, 38, 0, 37, 1, 31, 0, 37, 0, 37, 0, 36, 1, 16, 2, 25, 0, 43, 0, 0, 9, 47, 0, 8, 0, 52, 0, 0, 19, 39, 0, 54, 1, 15, 1, 54, 0, 74, 0, 0, 5, 65, 0, 75, 0, 75, 0, 74, 2, 61, 0, 74, 1, 78, 0, 100, 0, 102, 0, 100, 2, 103, 0, 100, 3, 101, 0, 100, 1, 106, 0, 107, 0, 107, 0, 104, 1, 100, 0, 108, 0, 108, 0, 51, 1, 48, 0, 115, 1, 106, 0, 48, 0, 51, 0, 115, 0, 115, 0, 104, 0, 108, 0, 116, 0, 22, 0, 117, 0, 116, 0, 117, 1, 117, 0, 118, 0, 119, 0, 118, 1, 107, 0, 120, 0, 118, 0, 121, 0, 120, 0, 121, 1, 122, 0, 0, 16, 18, 0, 123, 1, 130, 0, 123, 2, 124, 0, 131, 0, 8, 0, 51, 0, 104, 0, 18, 0, 104, 0, 123, 0, 106, 0, 124, 0, 48, 0, 119, 0, 131, 0, 130, 0, 54, 0, 0, 4, 6, 0, 133, 0, 135, 0, 134, 2, 136, 0, 134, 1, 134, 0, 0, 8, 133, 0, 136, 0, 4, 0, 136, 1, 133, 0, 134, 0, 142, 0, 141, 0, 141, 0, 145, 2, 123, 0, 145, 1, 139, 0, 145, 0, 141, 0, 147, 0, 147, 0, 146, 1, 121, 0, 146, 0, 146, 0, 0, 3, 145, 0, 0, 0, 25, 0, 0, 17 )
 
 [resource]
 shader = SubResource( 68 )

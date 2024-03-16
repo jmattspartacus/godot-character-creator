@@ -1,6 +1,6 @@
 extends Control
 var last_position = Vector2()
-onready var character = get_parent().get_node("MainCharacter")
+@onready var character = get_parent().get_node("MainCharacter")
 var hairName:Array=["Bald","Man Bun","Dad","Gnacker","Tal","Mullet"]
 var beardName:Array=["Beardless","Goatie","Amish","Moustache","Cantinflas"]
 var subBeard:Array=["Beardless","Hangover","Grut","Bigotelli"]
@@ -138,23 +138,23 @@ func _ready():
 		if bt.name!="random":
 			var style:StyleBoxFlat = StyleBoxFlat.new()
 			style.bg_color = hairTones[bt.name].hairColor
-			bt.set("custom_styles/normal",style)
-			bt.set("custom_styles/hover",style)
-			bt.connect("pressed",self,"_presetButtonClicked",[bt.name,"hair"])
+			bt.set("theme_override_styles/normal",style)
+			bt.set("theme_override_styles/hover",style)
+			bt.connect("pressed", Callable(self, "_presetButtonClicked").bind(bt.name,"hair"))
 			colorPresetsDict.hairColor[bt.name]=bt
 		else:
-			bt.connect("pressed",self,"_randomHairColorClicked",["hair"])
+			bt.connect("pressed", Callable(self, "_randomHairColorClicked").bind("hair"))
 	#- BEARD COLOUR PRESETS
 	for bt in $Panel/vb/hair/vb2/BeardColorPresets.get_children():
 		if bt.name!="random":
 			var style:StyleBoxFlat = StyleBoxFlat.new()
 			style.bg_color = hairTones[bt.name].hairColor
-			bt.set("custom_styles/normal",style)
-			bt.set("custom_styles/hover",style)
-			bt.connect("pressed",self,"_presetButtonClicked",[bt.name,"beard"])
+			bt.set("theme_override_styles/normal",style)
+			bt.set("theme_override_styles/hover",style)
+			bt.connect("pressed", Callable(self, "_presetButtonClicked").bind(bt.name,"beard"))
 			colorPresetsDict.beardColor[bt.name]=bt
 		else:
-			bt.connect("pressed",self,"_randomHairColorClicked",["beard"])	
+			bt.connect("pressed", Callable(self, "_randomHairColorClicked").bind("beard"))	
 	
 	
 	#- EYES COLOUR PRESETS
@@ -162,28 +162,28 @@ func _ready():
 		if bt.name!="random":
 			var style:StyleBoxFlat = StyleBoxFlat.new()	
 			style.bg_color = eyeTones[bt.name].eyeColor1
-			bt.set("custom_styles/normal",style)
-			bt.set("custom_styles/hover",style)
-			bt.connect("pressed",self,"_presetButtonClicked",[bt.name,"eyes"])	
+			bt.set("theme_override_styles/normal",style)
+			bt.set("theme_override_styles/hover",style)
+			bt.connect("pressed", Callable(self, "_presetButtonClicked").bind(bt.name,"eyes"))	
 			colorPresetsDict.eyesColor[bt.name]=bt
 		else:
-			bt.connect("pressed",self,"_randomEyesColorClicked")		
+			bt.connect("pressed", Callable(self, "_randomEyesColorClicked"))		
 
 	#- SKIN TONE PRESETS
 	for bt in $Panel/vb/body/vb/skinTonePresets.get_children():
 		if bt.name!="random":
 			var style:StyleBoxFlat = StyleBoxFlat.new()	
 			style.bg_color = skinTones[bt.name].skinColor
-			bt.set("custom_styles/normal",style)
-			bt.set("custom_styles/hover",style)
-			bt.connect("pressed",self,"_presetButtonClicked",[bt.name,"skin"])			
+			bt.set("theme_override_styles/normal",style)
+			bt.set("theme_override_styles/hover",style)
+			bt.connect("pressed", Callable(self, "_presetButtonClicked").bind(bt.name,"skin"))			
 			colorPresetsDict.skinTone[bt.name]=bt
 		else:
-			bt.connect("pressed",self,"_randomSkinToneClicked")	
+			bt.connect("pressed", Callable(self, "_randomSkinToneClicked"))	
 
 	#-PRESET BUTTONS
 	for bt in $Panel/vb/presets/GridContainer.get_children():
-		bt.connect("pressed",self,"_loadPreset",[bt.name])
+		bt.connect("pressed", Callable(self, "_loadPreset").bind(bt.name))
 		bt.texture_normal = ResourceLoader.load("res://Presets/"+bt.name+".png")
 	
 	
@@ -191,7 +191,7 @@ func _ready():
 	$Panel/vb/bt_presets.emit_signal("pressed")
 	
 	#WAIT TO THE CHARACTER LOAD
-	yield(get_tree(),"idle_frame")
+	await get_tree().idle_frame
 	
 	#-SET VIEWPORT SNAPSHOT TEXTURE
 	$HB/vp.icon = character.faceViewport.get_texture()
@@ -210,7 +210,7 @@ func _initValues():
 	_initSlider($Panel/vb/head/e_eyebrows/slider,eyebrowsName.size()-1,1,1,"Eyebrows Preset")
 	_initSlider($Panel/vb/head/w_eyeBrowHeight/slider,0,0,0,"Eyebrows Height")	
 	_initSlider($Panel/vb/head/p_facePaint/slider,facePaintName.size()-1,1,0,"Face Paint")
-	_initSlider($Panel/vb/body/m_chubby/slider,1,0.01,0.5,"Body Shape")
+	_initSlider($Panel/vb/body/m_chubby/slider,1,0.01,0.5,"Body Shape3D")
 	_initSlider($Panel/vb/hair/i_beard/slider,beardName.size()-1,1,0,"Beard Preset")
 	_initSlider($Panel/vb/hair/vb/hb/vb3/k_tipOffset/slider,8,0.01,3,"Tip")
 	_initSlider($Panel/vb/hair/vb/hb/vb/k_rootOffset/slider,8,0.01,3,"Root")
@@ -241,9 +241,9 @@ func _initSlider(slider:HSlider,size:int,step:float,value,name):
 	
 func _randomHairColorClicked(type:String):
 	randomize()
-	var col1:Color = Color(rand_range(0,0.3),rand_range(0,0.3),rand_range(0,0.3))
-	var col2:Color = Color(rand_range(0,0.6),rand_range(0,0.6),rand_range(0,0.6))
-	var col3:Color = Color(rand_range(0.5,1),rand_range(0.5,1),rand_range(0.5,1))
+	var col1:Color = Color(randf_range(0,0.3),randf_range(0,0.3),randf_range(0,0.3))
+	var col2:Color = Color(randf_range(0,0.6),randf_range(0,0.6),randf_range(0,0.6))
+	var col3:Color = Color(randf_range(0.5,1),randf_range(0.5,1),randf_range(0.5,1))
 	if type=="hair":
 		character._setMaterialParameter("rootColor","hair",col1)
 		character._setMaterialParameter("hairColor","hair",col2)
@@ -261,8 +261,8 @@ func _randomHairColorClicked(type:String):
 		
 func _randomEyesColorClicked():	
 	randomize()
-	var col1:Color = Color(rand_range(0.5,1),rand_range(0.5,1),rand_range(0.5,1))
-	var col2:Color = Color(rand_range(0,0.2),rand_range(0,0.2),rand_range(0,0.2))
+	var col1:Color = Color(randf_range(0.5,1),randf_range(0.5,1),randf_range(0.5,1))
+	var col2:Color = Color(randf_range(0,0.2),randf_range(0,0.2),randf_range(0,0.2))
 	$Panel/vb/head/vb2/eyeColor1_eyes.color = col1
 	$Panel/vb/head/vb2/eyeColor2_eyes.color = col2
 	character._setMaterialParameter("eyeColor1","eyes",col1)
@@ -271,7 +271,7 @@ func _randomEyesColorClicked():
 func _randomSkinToneClicked():
 	randomize()
 	var vmin = 0.6
-	var col:Color = Color(rand_range(vmin,1),rand_range(vmin,1),rand_range(vmin,1))
+	var col:Color = Color(randf_range(vmin,1),randf_range(vmin,1),randf_range(vmin,1))
 	$Panel/vb/body/vb/skinTone_body.color = col
 	character._setSkinColor(col)
 	

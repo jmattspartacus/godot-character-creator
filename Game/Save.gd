@@ -6,25 +6,25 @@ func _ready():
 	pass
 
 func _saveCharacter(n:String,data:Dictionary):
-	var fileSave = File.new()
-	fileSave.open(savePathCharacter+n+ext,File.WRITE)
-	fileSave.store_line(to_json(data))
+	var fileSave = FileAccess.open(savePathCharacter+n+ext,FileAccess.WRITE)
+	fileSave.store_line(JSON.new().stringify(data))
 	
 func _loadCharacter(n):
-	var fileSave = File.new()
-	fileSave.open(savePathCharacter+n+ext,File.READ)
-	var charData:Dictionary = parse_json(fileSave.get_line())
+	var fileSave = FileAccess.open(savePathCharacter+n+ext,FileAccess.READ)
+	var test_json_conv = JSON.new()
+	test_json_conv.parse(fileSave.get_line())
+	var charData:Dictionary = test_json_conv.get_data()
 	return charData
 
 
 func _savePreset(n:String,data:Dictionary):
-	var fileSave = File.new()
-	fileSave.open(savePathPreset+n+ext,File.WRITE)
-	fileSave.store_line(to_json(data))
+	var fileSave = FileAccess.open(savePathPreset+n+ext,FileAccess.WRITE)
+	fileSave.store_line(JSON.new().stringify(data))
 	
 func _loadPreset(n):
-	var fileSave = File.new()
-	fileSave.open(savePathPreset+n+ext,File.READ)
-	var charData:Dictionary = parse_json(fileSave.get_line())
+	var fileSave = FileAccess.open(savePathPreset+n+ext,FileAccess.READ)
+	var test_json_conv = JSON.new()
+	test_json_conv.parse(fileSave.get_line())
+	var charData:Dictionary = test_json_conv.get_data()
 	return charData
 
