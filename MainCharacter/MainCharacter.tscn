@@ -1,7 +1,7 @@
 [gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://MainCharacter/MainCharacter.gd" type="Script" id=1]
-[ext_resource path="res://.godot/imported/MainRig.gltf-a994b333ddf37bbec0e66ad9a1a12c7f.scn" type="PackedScene" id=2]
+[ext_resource path="res://MainCharacter/Mesh/MainCharacter.gltf" type="PackedScene" id=2]
 
 [sub_resource type="BoxShape3D" id=1]
 extents = Vector3( 0.02, 0.004, 0.0141144 )
@@ -84,8 +84,6 @@ var last_position:Vector2
 func _ready():
 	pass
 func _input(event):
-
-	
 	if Input.is_action_just_pressed(\"rmb\"):
 		last_position = get_viewport().get_mouse_position()
 		
@@ -93,7 +91,7 @@ func _input(event):
 		var delta = get_viewport().get_mouse_position() - last_position
 		last_position = get_viewport().get_mouse_position()
 		get_parent().rotate_y(-delta.x*0.01)
-
+"
 
 [node name="MainCharacter" instance=ExtResource( 2 )]
 script = ExtResource( 1 )
