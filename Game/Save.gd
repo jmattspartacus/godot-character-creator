@@ -19,7 +19,7 @@ func _loadCharacter(n):
 
 func _savePreset(n:String,data:Dictionary):
 	var fileSave = FileAccess.open(savePathPreset+n+ext,FileAccess.WRITE)
-	fileSave.store_line(JSON.new().stringify(data))
+	fileSave.store_line(JSON.stringify(data))
 	
 func _loadPreset(n):
 	var fileSave = FileAccess.open(savePathPreset+n+ext,FileAccess.READ)
